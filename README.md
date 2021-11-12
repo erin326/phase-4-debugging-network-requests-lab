@@ -64,10 +64,30 @@ developing your own process.
 
   - How I debugged:
 
+  - look at network preview
+  - 500 internal server error
+  - view exception: "#<NameError:   uninitialized constant ToysController::Toys>"
+  - in traces: trace: "app/controllers/toys_controller.rb:10:in `create'"}
+  -tells me the location and line number of error
+  - edited Toys to Toy in create method
+
+
 - Update the number of likes for a toy
 
   - How I debugged:
 
+  -in console: SyntaxError: Unexpected end of JSON input at ToyCard.js:21
+  - in network: 204 No Content
+  - no JSON was being returned, so go check the toys_controller to make sure it's rendering json in the udpate method. it was not, so i added render json: toy 
+
 - Donate a toy to Goodwill (and delete it from our database)
 
   - How I debugged:
+
+  -404 Not Found error
+    - in network preview:             exception:"#<ActionController::RoutingError: No route matches [DELETE] \"/toys/1\">"
+  status: 404
+  - head to routes.rb file 
+  -there was no destroy route in the list of resources, so I added it. 
+
+
